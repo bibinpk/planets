@@ -1,0 +1,87 @@
+{% extends 'header.html' %}
+{% load static %}
+  {% block body %}
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="slider_active owl-carousel">
+            {% for slide in slides|slice:'3' %}
+            <div style="background-image: url('{{ slide.slide_id.large_pic.url }}')" class="single_slider d-flex align-items-center overlay">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12">
+                            <div class="slider_text text-center">
+                                <h3>{{ slide.slide_id.name }}</h3>
+                                <p>{{ slide.slide_id.description }}</p>
+                                <a href="/destinations/{{ slide.slide_id.name }}" class="boxed-btn3">Explore Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+    <!-- slider_area_end -->
+
+    <!-- popular_destination_area_start  -->
+    <div class="popular_destination_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Popular Destination</h3>
+                        <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for pop in pops %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_destination">
+                        <div class="thumb">
+                            <img src="{{ pop.cou_id.small_pic.url }}" alt="">
+                        </div>
+                        <div class="content">
+                            <p class="d-flex align-items-center"><a href="/destinations/{{ pop.cou_id.name }}">{{ pop.cou_id.name }}</a> </p>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- popular_destination_area_end  -->
+    <!-- popular places start area -->
+    <div class="popular_places_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Popular Places</h3>
+                        <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for pop_dest in pop_dests|slice:'6' %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_place">
+                        <div class="thumb">
+                            <img src="{{ pop_dest.dest_id.small_pic.url }}" alt="">
+                        </div>
+                        <div class="place_info">
+                            <a href="/destination/{{ pop_dest.dest_id.name }}"><h3>{{ pop_dest.dest_id.name }}</h3></a>
+                            <p>{{ pop_dest.dest_id.country.name }}</p>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- popular places end area -->
+ {% endblock %}
